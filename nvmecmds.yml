@@ -1,0 +1,12 @@
+---
+
+- name: Run NVMe commands on webservers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Run 'nvme list'
+      command: nvme list
+      register: nvme_list_output
+    - name: Show 'nvme list' output
+      debug:
+        var: nvme_list_output.stdout
