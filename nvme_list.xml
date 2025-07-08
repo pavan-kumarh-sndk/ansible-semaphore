@@ -1,0 +1,15 @@
+
+---
+
+- name: Run NVMe commands on webservers
+  hosts: webservers
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Run 'nvme list' for drive detection
+      script: nvme_list.py
+      register: script_output
+    - name: Print script stdout
+      debug:
+        var: script_output.stdout
