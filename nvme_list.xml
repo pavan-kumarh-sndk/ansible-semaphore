@@ -8,7 +8,7 @@
     ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Run 'nvme list' for drive detection
-      command: python3 nvme_list.py
+      script: nvme_list.py
       register: script_output
     - name: Print script stdout
       debug:
